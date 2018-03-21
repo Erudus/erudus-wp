@@ -25,7 +25,7 @@
         <thead>
         <tr>
             <th>Typical Values</th>
-            <th>Per 100g</th>
+            <th style="width:20%;">Per 100g</th>
         </tr>
         </thead>
         <tbody>
@@ -84,10 +84,113 @@
 
     <h3>Allergens</h3>
 
+    <table class="table">
+        <thead>
+            <tr>
+                <th></th>
+                <th style="width:20%;"></th>
+            </tr>
+        </thead>
+        <tr>
+            <td>Contains Cereal</td>
+            <td><?php echo $component->allergens->contains_cereal; ?></td>
+        </tr>
+        <tr>
+            <td>Contains Gluten</td>
+            <td><?php echo $component->allergens->contains_gluten; ?></td>
+        </tr>
+        <tr>
+            <td>Contains Milk</td>
+            <td><?php echo $component->allergens->contains_milk; ?></td>
+        </tr>
+        <tr>
+            <td>Contains Eggs</td>
+            <td><?php echo $component->allergens->contains_eggs; ?></td>
+        </tr>
+        <tr>
+            <td>Contains Peanuts</td>
+            <td><?php echo $component->allergens->contains_peanuts; ?></td>
+        </tr>
+        <tr>
+            <td>Contains Nuts</td>
+            <td><?php echo $component->allergens->contains_tree_nuts; ?></td>
+        </tr>
+        <tr>
+            <td>Contains Crustaceans</td>
+            <td><?php echo $component->allergens->contains_crustacea; ?></td>
+        </tr>
+        <tr>
+            <td>Contains Mustard</td>
+            <td><?php echo $component->allergens->contains_mustard; ?></td>
+        </tr>
+        <tr>
+            <td>Contains Fish</td>
+            <td><?php echo $component->allergens->contains_fish; ?></td>
+        </tr>
+        <tr>
+            <td>Contains Lupin</td>
+            <td><?php echo $component->allergens->contains_lupin; ?></td>
+        </tr>
+        <tr>
+            <td>Contains Sesame</td>
+            <td><?php echo $component->allergens->contains_sesame_seeds; ?></td>
+        </tr>
+        <tr>
+            <td>Contains Celery</td>
+            <td><?php echo $component->allergens->contains_celery_celeriac; ?></td>
+        </tr>
+        <tr>
+            <td>Contains Soya</td>
+            <td><?php echo $component->allergens->contains_soybeans; ?></td>
+        </tr>
+        <tr>
+            <td>Contains Molluscs</td>
+            <td><?php echo $component->allergens->contains_molluscs; ?></td>
+        </tr>
+        <tr>
+            <td>Contains Sulphur Dioxide</td>
+            <td><?php echo $component->allergens->contains_sulphur_dioxide; ?></td>
+        </tr>
+    </table>
+
     <h3>Dietary Information</h3>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th></th>
+            <th style="width:20%;"></th>
+        </tr>
+        </thead>
+        <tr>
+            <td>Suitable for Vegetarians</td>
+            <td><?php echo $component->diets->vegetarian_suitable; ?></td>
+        </tr>
+        <tr>
+            <td>Suitabel for Vegans</td>
+            <td><?php echo $component->diets->vegan_suitable; ?></td>
+        </tr>
+        <tr>
+            <td>Suitable for Sufferers of Lactose Intolerance</td>
+            <td><?php echo $component->diets->lactose_intolerance_suitable; ?></td>
+        </tr>
+        <tr>
+            <td>Suitable for Coeliacs</td>
+            <td><?php echo $component->diets->coeliacs_suitable; ?></td>
+        </tr>
+        <tr>
+            <td>Approved for a Halal Diet</td>
+            <td><?php echo $component->diets->halal_approved; ?></td>
+        </tr>
+        <tr>
+            <td>Approved for a Kosher Diet</td>
+            <td><?php echo $component->diets->kosher_approved; ?></td>
+        </tr>
+
+    </table>
 
     <h3>Handling & Preparation</h3>
     <p><?php echo nl2br( $component->handling->directions_for_use); ?></p>
     <p><?php echo nl2br($component->handling->storage_instructions); ?></p>
-    <?php var_dump($component ) ?>
+
 <?php } ?>

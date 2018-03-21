@@ -11,6 +11,8 @@ function erudus_show_product($erudus_id)
 
     $product = erudus_get_product($erudus_id);
 
+    if(!$product) return 'Product Data Not Found';
+
     ob_start();
 
     include erudus_product_template_path();
