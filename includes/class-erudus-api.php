@@ -12,8 +12,10 @@ class Erudus_Api
 
     private $key;
     private $secret;
+    private $cache;
 
     protected $token;
+
 
     /**
      * Erudus_Api constructor.
@@ -24,6 +26,7 @@ class Erudus_Api
     {
         $this->key = $key;
         $this->secret = $secret;
+        $this->cache = new Erudus_Cache();
 
         $options = get_option('erudus_options');
 
@@ -114,10 +117,9 @@ class Erudus_Api
     {
 
         // cached ?
-        if ( $product = get_transient( 'erudus_product_' . $erudusId ) ) {
-            return $product;
-        }
+        if ( $product = $this->cache->get($erudusId) ) return $product;
 
+        // get from erudus
         try {
 
             $client = new Client(
@@ -139,8 +141,11 @@ class Erudus_Api
 
         $product = json_decode($response->getBody())->data;
 
-        // cache token (tokens expire after one hour so say 50min)
-        set_transient( 'erudus_product_' . $erudusId, $product,  DAY_IN_SECONDS );
+        // check we have some data
+        if(empty($product) || empty($product->id)) return false;
+
+        // replace cached
+        $this->cache->set($erudusId,$product);
 
         return $product;
 

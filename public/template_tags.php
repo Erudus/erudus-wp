@@ -6,7 +6,7 @@
  * @param $erudus_id
  * @return string
  */
-function erudus_show_product($erudus_id)
+function erudus_show_product($erudus_id = null)
 {
 
     $product = erudus_get_product($erudus_id);

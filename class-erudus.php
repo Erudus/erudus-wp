@@ -104,10 +104,10 @@ class Erudus {
 	 */
 	private function load_dependencies() {
 
+        include_once plugin_dir_path( __FILE__ ) . 'includes/class-erudus-cache.php';
         include_once plugin_dir_path( __FILE__ ) . 'includes/class-erudus-api.php';
         include_once plugin_dir_path( __FILE__ ) . 'public/template_tags.php';
         include_once plugin_dir_path( __FILE__ ) . 'public/class-erudus-shortcodes.php';
-        include_once plugin_dir_path( __FILE__ ) . 'includes/class-erudus-to-custom-fields.php';
 
         if ( is_admin() ) {
             include_once plugin_dir_path( __FILE__ ) . 'admin/class-erudus-admin.php';
@@ -120,7 +120,6 @@ class Erudus {
     public function init_hooks() {
 
         Erudus_Shortcodes::init();
-        Erudus_To_Custom_Fields::init();
 
     }
 

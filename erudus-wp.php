@@ -39,6 +39,32 @@ define( 'ERUDUS_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
 
 require 'vendor/autoload.php';
 
+/**
+ * Currently plugin version.
+ * Start at version 1.0.0 and use SemVer - https://semver.org
+ * Rename this for your plugin and update it as you release new versions.
+ */
+define( 'PLUGIN_NAME_VERSION', '1.0.0' );
+/**
+ * The code that runs during plugin activation.
+ * This action is documented in includes/class-plugin-name-activator.php
+ */
+function activate_erudus_wp() {
+
+    require_once plugin_dir_path( __FILE__ ) . 'includes/class-erudus-activator.php';
+    Erudus_Activator::activate();
+}
+/**
+ * The code that runs during plugin deactivation.
+ * This action is documented in includes/class-plugin-name-deactivator.php
+ */
+function deactivate_erudus_wp() {
+   // to do
+
+}
+register_activation_hook( __FILE__, 'activate_erudus_wp' );
+register_deactivation_hook( __FILE__, 'deactivate_erudus_wp' );
+
 require plugin_dir_path( __FILE__ ) . 'class-erudus.php';
 
 function Erudus() {

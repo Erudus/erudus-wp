@@ -37,18 +37,6 @@
                 </td>
             </tr>
             <tr>
-                <td>Carbohydrates</td>
-                <td>
-                    <?php echo $component->nutrients->carb_100->value ?> <?php echo $component->nutrients->carb_100->unit ?>
-                </td>
-            </tr>
-            <tr>
-                <td> - of which sugars</td>
-                <td>
-                    <?php echo $component->nutrients->sugar_carb_100->value ?> <?php echo $component->nutrients->sugar_carb_100->unit ?>
-                </td>
-            </tr>
-            <tr>
                 <td>Fat</td>
                 <td>
                     <?php echo $component->nutrients->fat_100->value ?> <?php echo $component->nutrients->fat_100->unit ?>
@@ -60,6 +48,19 @@
                     <?php echo $component->nutrients->sat_fat_100->value ?> <?php echo $component->nutrients->sat_fat_100->unit ?>
                 </td>
             </tr>
+            <tr>
+                <td>Carbohydrates</td>
+                <td>
+                    <?php echo $component->nutrients->carb_100->value ?> <?php echo $component->nutrients->carb_100->unit ?>
+                </td>
+            </tr>
+            <tr>
+                <td> - of which sugars</td>
+                <td>
+                    <?php echo $component->nutrients->sugar_carb_100->value ?> <?php echo $component->nutrients->sugar_carb_100->unit ?>
+                </td>
+            </tr>
+
             <tr>
                 <td>Fibre</td>
                 <td>
