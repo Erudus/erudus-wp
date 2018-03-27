@@ -22,12 +22,9 @@
  */
 class Erudus_Activator {
 
+
     /**
-     * Short Description. (use period)
-     *
-     * Long Description.
-     *
-     * @since    1.0.0
+     *  activate, create db table for cache
      */
     public static function activate() {
 
