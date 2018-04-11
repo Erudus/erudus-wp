@@ -168,19 +168,13 @@ class Erudus_Admin {
      */
     public function admin_notice(){
 
-        global $pagenow;
-
-        if ( $pagenow == 'options-general.php' ) {
-
-            if( !($this->options['erudus_client_key'] && $this->options['erudus_client_secret']) )
-            {
-                echo '<div class="notice notice-error is-dismissible">';
-                echo '<p>Please enter your Erudus API keys in Erudus One settings page.</p>';
-                echo '</div>';
-
-            }
-
+        if( !($this->options['erudus_client_key'] && $this->options['erudus_client_secret']) )
+        {
+            echo '<div class="notice notice-error is-dismissible">';
+            echo '<p>Please enter your Erudus API keys in the <a href="'.admin_url('options-general.php?page=erudus-one-admin').'" title="Erudus One Settings" >Erudus One settings page</a>.</p>';
+            echo '</div>';
         }
+
     }
 
 

@@ -195,3 +195,5 @@
     <p><?php echo nl2br($component->handling->storage_instructions); ?></p>
 
 <?php } ?>
+
+<p><small>data supplied by <a href="https://erudus.com" title="Erudus - the Food Industry's solution for Product Data.">Erudus</a></small></p>
