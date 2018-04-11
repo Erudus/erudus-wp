@@ -8,13 +8,13 @@
  * registers the activation and deactivation functions, and defines a function
  * that starts the plugin.
  *
- * @link              http://example.com
+ * @link              http://erudus.com
  * @since             1.0.0
  * @package           erudus-wp
  *
  * @wordpress-plugin
  * Plugin Name:       Erudus One
- * Plugin URI:        http://wholebyte.com/
+ * Plugin URI:        http://erudus.com/
  * Description:       Use Erudus product data in WordPress.
  * Version:           1.0.0
  * Author:            Tim Hyde

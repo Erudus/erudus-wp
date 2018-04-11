@@ -1,6 +1,6 @@
 === Erudus One for WordPress ===
 Contributors: livingos
-Tags: comments, spam
+Tags: food, ingredients, nutrition, allergens
 Requires at least: 3.8
 Tested up to: 3.9.5
 Stable tag: 1.0
