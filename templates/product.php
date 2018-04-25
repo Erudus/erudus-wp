@@ -13,9 +13,13 @@
 
 <?php foreach($product->components as $component) { ?>
 
+    <?php if(isset($component->component_name)): ?>
+    <h2><?php echo $component->component_name; ?></h2>
+    <?php endif; ?>
+
     <p>Weight/Volume : <?php echo $component->inner->weightvol_on_inner; ?></p>
     <p>Inner GTIN : <?php echo $component->internal_gtin; ?></p>
-
+    <p>Packaging Type : <?php echo $component->inner->inner_packaging_type; ?></p>
     <h3>Ingredients</h3>
     <p><?php echo esc_html($component->ingredients); ?></p>
 
@@ -191,8 +195,13 @@
     </table>
 
     <h3>Handling & Preparation</h3>
+    <h4>Directions for Use</h4>
     <p><?php echo nl2br( $component->handling->directions_for_use); ?></p>
+    <h4>Storage Instructions</h4>
     <p><?php echo nl2br($component->handling->storage_instructions); ?></p>
+
+    <h3>Country of Origin</h3>
+    <p><?php echo $component->country_of_origin->country ?> (<?php echo $component->country_of_origin->details ?>)</p>
 
 <?php } ?>
 

@@ -37,8 +37,6 @@ if ( ! defined( 'WPINC' ) ) {
 
 define( 'ERUDUS_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
 
-require 'vendor/autoload.php';
-
 /**
  * Currently plugin version.
  * Start at version 1.0.0 and use SemVer - https://semver.org

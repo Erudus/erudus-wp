@@ -107,6 +107,14 @@ class Erudus_Admin {
             'erudus-one' // Section
         );
 
+        add_settings_field(
+            'erudus_clear_cache',
+            'Clear the cache',
+            array($this,'erudus_clear_cache_callback'),
+            'erudus-one-admin',
+            'erudus-one'
+        );
+
     }
 
     /**
@@ -129,6 +137,10 @@ class Erudus_Admin {
 
         if( $client->newAccessToken() == false)
             add_settings_error('erudus_options_notice', 'erudus_options_notice', 'Unable to access API with these credentials.', 'error');
+
+        // clear cache ?
+        if( isset( $input['erudus_clear_cache'] ) )
+            $client->clearCache();
 
         return $new_input;
     }
@@ -161,6 +173,12 @@ class Erudus_Admin {
             '<input type="text" id="erudus_client_secret" name="erudus_options[erudus_client_secret]" value="%s" class="regular-text"/>',
             isset( $this->options['erudus_client_secret'] ) ? esc_attr( $this->options['erudus_client_secret']) : ''
         );
+    }
+
+    public function erudus_clear_cache_callback()
+    {
+        echo'<input type="checkbox" id="erudus_clear_cache" name="erudus_options[erudus_clear_cache]" value="1" />';
+
     }
 
     /**

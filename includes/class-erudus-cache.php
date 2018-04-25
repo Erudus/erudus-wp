@@ -23,10 +23,13 @@ class Erudus_Cache
 
         if(!$product) return false;
 
-        // if older than 1 day then force clear
-        if(strtotime($product->last_updated) < ( time() - $this->expires) ) return false;
+        // if older than 1 day then is expired
+        $expired = (strtotime($product->last_updated) < ( time() - $this->expires));
 
-        return unserialize($product->data);
+        $data = unserialize($product->data);
+        $data->is_expired= $expired;
+
+        return $data;
 
     }
 
@@ -70,6 +73,18 @@ class Erudus_Cache
         global $wpdb;
 
         $wpdb->delete($wpdb->prefix.'erudus_cache',array('erudus_id' => $id));
+
+    }
+
+    public function clearAll()
+    {
+        global $wpdb;
+
+        $wpdb->query(
+            $wpdb->prepare(
+                "TRUNCATE " .$wpdb->prefix.'erudus_cache',array()
+            )
+        );
 
     }
 }

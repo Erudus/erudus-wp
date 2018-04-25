@@ -1,7 +1,5 @@
 <?php
 
-use GuzzleHttp\Client;
-
 if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
@@ -43,32 +41,32 @@ class Erudus_Api
     public function newAccessToken()
     {
 
-        try {
+        $data = array(
+            'client_id'     => $this->key,
+            'client_secret' => $this->secret,
+            'grant_type'    => 'client_credentials',
+            'scope'         => 'PUBLIC'
+        );
 
-            $data = array(
-                'client_id'     => $this->key,
-                'client_secret' => $this->secret,
-                'grant_type'    => 'client_credentials',
-                'scope'         => 'PUBLIC'
-            );
+        $args = array(
+            'body' => json_encode($data),
+            'timeout' => '5',
+            'redirection' => '5',
+            'httpversion' => '1.0',
+            'blocking' => true,
+            'headers' => array('Content-Type' => 'application/json'),
+            'cookies' => array()
+        );
 
-            $client = new Client(['headers' => ['Content-Type' => 'application/json']]);
+        $response = wp_remote_post( sprintf('%s/api/access_token', $this->baseUrl), $args );
 
-            $response = $client->post(sprintf('%s/api/access_token', $this->baseUrl), [
-                'form_params' => $data
-            ]);
-
-        } catch(\GuzzleHttp\Exception\BadResponseException $e) {
-
-          //  $this->lastResponse = $e->getResponse();
-
+        if ( is_wp_error( $response ) ) {
             return false;
-
         }
 
-        $response = json_decode($response->getBody());
+        $response = json_decode( wp_remote_retrieve_body( $response ) );
 
-        $this->setToken($response->access_token);
+        $this->setToken( $response->access_token );
 
         return $this->token;
 
@@ -116,39 +114,59 @@ class Erudus_Api
     public function getProduct($erudusId)
     {
 
-        // cached ?
-        if ( $product = $this->cache->get($erudusId) ) return $product;
+        // force refresh of cache ?
+        if (isset($_GET['erudus-refresh'])) $this->cache->remove($erudusId);
 
-        // get from erudus
-        try {
+        // get cached version
+        $cached = $this->cache->get($erudusId);
 
-            $client = new Client(
-                [
-                    'headers' =>
-                        [
-                            'Content-Type' => 'application/json',
-                            'Authorization' => 'Bearer ' . $this->getToken()
-                        ]
-                ]);
+        if($cached && !$cached->is_expired) return $cached;
 
-            $response = $client->get(sprintf('%s/api/public/v1/products/%s?full=1', $this->baseUrl, $erudusId));
+        // else get fresh version
+        $product = $this->getProductFromErudus($erudusId);
 
-        } catch(\GuzzleHttp\Exception\BadResponseException $e) {
-
-            return false;
-
-        }
-
-        $product = json_decode($response->getBody())->data;
-
-        // check we have some data
-        if(empty($product) || empty($product->id)) return false;
+        // cannot get new product so just returned cached
+        if(!$product) return $cached;
 
         // replace cached
         $this->cache->set($erudusId,$product);
 
         return $product;
 
+    }
+
+    protected function getProductFromErudus($id)
+    {
+        // get product data from Erudus
+        $headers = array(
+            'Content-Type' => 'application/json',
+            'Authorization' => 'Bearer ' . $this->getToken()
+        );
+
+        $args = array(
+            'headers' => $headers
+        );
+
+        $response = wp_remote_get( sprintf('%s/api/public/v1/products/%s?full=1', $this->baseUrl, $id), $args );
+
+        if ( is_wp_error( $response ) ) {
+            return false;
+        }
+
+        if(wp_remote_retrieve_response_code( $response ) != 200) return false;
+
+        $product = json_decode( wp_remote_retrieve_body( $response ) )->data;
+
+        // check we have some data
+        if(empty($product)|| empty($product->id)) return false;
+
+        return $product;
+
+    }
+
+    public function clearCache()
+    {
+        $this->cache->clearAll();
     }
 
 
