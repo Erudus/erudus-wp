@@ -29,7 +29,7 @@
         <thead>
         <tr>
             <th>Typical Values</th>
-            <th style="width:20%;">Per 100g</th>
+            <th style="width:20%;">Per 100g/ml</th>
         </tr>
         </thead>
         <tbody>
@@ -172,7 +172,7 @@
             <td><?php echo $component->diets->vegetarian_suitable; ?></td>
         </tr>
         <tr>
-            <td>Suitabel for Vegans</td>
+            <td>Suitable for Vegans</td>
             <td><?php echo $component->diets->vegan_suitable; ?></td>
         </tr>
         <tr>
