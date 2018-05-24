@@ -20,6 +20,12 @@
  * @subpackage Plugin_Name/includes
  * @author     Your Name <email@example.com>
  */
+
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
+
+if ( ! class_exists( 'Erudus_Activator' ) ) :
 class Erudus_Activator {
 
 
@@ -46,3 +52,4 @@ class Erudus_Activator {
     }
 
 }
+endif;

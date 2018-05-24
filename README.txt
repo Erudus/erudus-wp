@@ -1,13 +1,13 @@
 === Erudus One for WordPress ===
 Contributors: livingos
-Tags: food, ingredients, nutrition, allergens
+Tags: food, ingredients, nutrition, allergens, api
 Requires at least: 3.8
-Tested up to: 3.9.5
+Tested up to: 3.9.6
 Stable tag: 1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Use Erudus product data inside of WordPress using the Erudus API.
+Display Erudus product data inside of WordPress using the Erudus API.
 
 == Description ==
 
@@ -26,7 +26,7 @@ To show a product specification, you can use the shortcode:
 Simply find the product you need from erudus and replace the id attribute with the correct Erudus ID.
 
 = Customisation =
-To customise display of product information, copy  product.php found in the plugin's templates folder to a folder named erudus inside your theme and edit the file.
+To customise the display of product information, copy  product.php found in the plugin's templates folder to a folder named erudus inside your theme and edit the file.
 
 = Template Functions =
 To further customise and use product data, you can use the template function erudus_get_product($erudus_id) to get product data for a product. This will return an object containing all fields found in the API.

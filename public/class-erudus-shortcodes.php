@@ -3,7 +3,7 @@
 if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
-
+if ( ! class_exists( 'Erudus_Shortcodes' ) ) :
 class Erudus_Shortcodes {
 
     /**
@@ -40,3 +40,4 @@ class Erudus_Shortcodes {
     }
 
 }
+endif;

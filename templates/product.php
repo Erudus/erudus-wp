@@ -205,4 +205,3 @@
 
 <?php } ?>
 
-<p><small>data supplied by <a href="https://erudus.com" title="Erudus - the Food Industry's solution for Product Data.">Erudus</a></small></p>

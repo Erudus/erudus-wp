@@ -8,17 +8,17 @@
  * registers the activation and deactivation functions, and defines a function
  * that starts the plugin.
  *
- * @link              http://erudus.com
+ * @link              https://erudus.com
  * @since             1.0.0
  * @package           erudus-wp
  *
  * @wordpress-plugin
  * Plugin Name:       Erudus One
- * Plugin URI:        http://erudus.com/
- * Description:       Use Erudus product data in WordPress.
+ * Plugin URI:        https://erudus.com/
+ * Description:       Use the Erudus API to display food product data in WordPress.
  * Version:           1.0.0
  * Author:            Tim Hyde
- * Author URI:        http://wholebyte.com/
+ * Author URI:        https://wholebyte.com/
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       erudus
@@ -37,12 +37,6 @@ if ( ! defined( 'WPINC' ) ) {
 
 define( 'ERUDUS_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
 
-/**
- * Currently plugin version.
- * Start at version 1.0.0 and use SemVer - https://semver.org
- * Rename this for your plugin and update it as you release new versions.
- */
-define( 'PLUGIN_NAME_VERSION', '1.0.0' );
 /**
  * The code that runs during plugin activation.
  * This action is documented in includes/class-plugin-name-activator.php

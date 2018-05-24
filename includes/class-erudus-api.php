@@ -4,6 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
+if ( ! class_exists( 'Erudus_Api' ) ) :
 class Erudus_Api
 {
     protected $baseUrl  = "https://services.erudus.com";
@@ -171,3 +172,4 @@ class Erudus_Api
 
 
 }
+endif;

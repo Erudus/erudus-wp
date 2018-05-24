@@ -4,6 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
+if ( ! class_exists( 'Erudus_Cache' ) ) :
 class Erudus_Cache
 {
 
@@ -88,3 +89,4 @@ class Erudus_Cache
 
     }
 }
+endif;
