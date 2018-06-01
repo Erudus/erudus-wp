@@ -8,11 +8,6 @@
  * registers the activation and deactivation functions, and defines a function
  * that starts the plugin.
  *
- * @link              https://erudus.com
- * @since             1.0.0
- * @package           erudus-wp
- *
- * @wordpress-plugin
  * Plugin Name:       Erudus One
  * Plugin URI:        https://erudus.com/
  * Description:       Use the Erudus API to display food product data in WordPress.
