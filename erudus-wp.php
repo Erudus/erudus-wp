@@ -13,7 +13,7 @@
  * Description:       Use the Erudus API to display food product data in WordPress.
  * Version:           1.0.0
  * Author:            Tim Hyde
- * Author URI:        https://wholebyte.com/
+ * Author URI:        https://erudus.com/
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       erudus

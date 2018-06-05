@@ -21,7 +21,7 @@ To use this plugin you will need Erudus API credentials.
 
 To show a product specification, you can use the shortcode:
 
-```[erudus-product id="eruduesproductid"]```
+[erudus-product id="eruduesproductid"]
 
 Simply find the product you need from erudus and replace the id attribute with the correct Erudus ID.
 
